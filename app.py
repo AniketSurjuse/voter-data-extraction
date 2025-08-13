@@ -40,7 +40,8 @@ if uploaded_file is not None:
     if st.session_state.voter_data:
         voter_list = st.session_state.voter_data
         df = pd.DataFrame(voter_list)
-        
+        if 'text' in df.columns:
+            df.drop(columns=['text'], inplace=True)
         st.success(f"Successfully extracted {len(voter_list)} voter records")
         st.dataframe(df.head(10))
         
@@ -70,4 +71,5 @@ if uploaded_file is not None:
             )
        
     else:
+
         st.warning("No voter data found in the PDF")
