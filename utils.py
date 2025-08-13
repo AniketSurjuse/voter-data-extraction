@@ -8,8 +8,8 @@ import io
 import streamlit as st
 
 # Set tesseract path directly in your script
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Windows
-# pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Linux/macOS
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Windows
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # Linux/macOS
 
 def extract_key_value_pairs(full_text):
     
@@ -173,4 +173,5 @@ def extract_pdf_blocks(pdf_path):
 
     end_time = time.time()
     st.write(f"Extracted {len(voters_data)} voter records in {end_time - strat_time:.2f} seconds")
+
     return voters_data
